@@ -45,12 +45,41 @@ public class TaxCalculator {
 
         return tax;
     }
+<<<<<<< HEAD
     public static String getTaxInformation(Users user, double income){
         double calculatedTax = calculateTax(user, income);
         String taxInfo = "Tax Information for User " + user.getUsername() + ":\n" +
                 "Income: $" + income + "\n" +
                 "Calculated Tax: $" + calculatedTax + "\n";
         return taxInfo;
+    }
+=======
+
+    public static double calculateUSC(double income) {
+        double usc = 0;
+
+        if (income <= 12012) {
+            usc = 0.005 * income; // 0.5%
+        } else if (income <= 22110) {
+            usc = 0.02 * income; // 2% after 12012
+        } else if (income <= 69234) {
+            usc = 0.045 * income; // 4.5% after 22110
+        } else {
+            usc = 0.08 * income; // 8% after 69234
+        }
+        return usc;
+    }
+
+    public static double calculatePRSI(double income) {
+        double weeklyIncome = income / 52;
+        double prsi = 0;
+
+        if (weeklyIncome > 352) {
+            prsi = income * 0.04; // 4% of income
+            return prsi;
+        } else {
+            return 0 ;
+        }
     }
 }
 
