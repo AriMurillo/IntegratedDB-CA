@@ -18,9 +18,11 @@ public abstract class Users {
     private String marital_status;
     private boolean if_married_both_work;
     private boolean children;
+    private int id;
+    private int employeeID;
     private UserType userType;
 
-    public Users(String username, String password, String firstName, String lastName, String gender, String email, String marital_status, boolean if_married_both_work, boolean children, UserType userType) {
+    public Users(String username, String password, String firstName, String lastName, String gender, String email, String marital_status, boolean if_married_both_work, boolean children, int id, int employeeID, UserType userType) {
         this.username = username;
         this.password = password;
         this.firstName = firstName;
@@ -30,6 +32,8 @@ public abstract class Users {
         this.marital_status = marital_status;
         this.if_married_both_work = if_married_both_work;
         this.children = children;
+        this.id = id;
+        this.employeeID = employeeID;
         this.userType = userType;
     }
 
@@ -103,6 +107,22 @@ public abstract class Users {
 
     public void setChildren(boolean children) {
         this.children = children;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getEmployeeID() {
+        return employeeID;
+    }
+
+    public void setEmployeeID(int employeeID) {
+        this.employeeID = employeeID;
     }
 
     public UserType getUserType() {
