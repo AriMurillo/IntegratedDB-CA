@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -36,11 +37,11 @@ public class GUI {
                     System.out.println("Login successful. User Name: " + userName);
                     //i++;
                     if(user.getUserType() == true){
-                        System.out.println("What would you like to do?" +
+                        System.out.println("What would you like to do? \n" +
                                 "1. Update your profile \n" +
                                 "2. Remove users \n" +
                                 "3. List of users \n" +
-                                "4. Review users information");
+                                "4. Review user taxes information");
                         int action1 = sc.nextInt();
                         switch(action1){
                             case 1:
@@ -57,13 +58,27 @@ public class GUI {
                                 System.out.println("Enter the username of the user to be removed: ");
                                 String usernameToRemove = sc.next();
                                 Database.removeUser(usernameToRemove);
-
+                            case 3:
+                                System.out.println("List of users:");
+                                ArrayList<Users> userList = Database.getUsersList();
+                                for (Users u : userList) {
+                                System.out.println("User ID: " + u.getId());
+                                System.out.println("Username: " + u.getUsername());
+                                System.out.println("First Name: " + u.getFirstName());
+                                System.out.println("Last Name: " + u.getLastName());
+                                System.out.println("Gender: " + u.getGender());
+                                System.out.println("Email: " + u.getEmail());
+                                System.out.println("Marital Status: " + u.getMarital_status());
+                                System.out.println("Both Work If Married: " + u.isIf_married_both_work());
+                                System.out.println("Children: " + u.isChildren());}
+                            case 4:
+                                
                         }
                     } else{
                         System.out.println("What would you like to do?\n" +
                                 "1. Update your Profile \n" +
-                                "2. Check your Taxes \n" +
-                                "3. Review your Information");
+                                "2. Review your Information \n" +
+                                "3. Taxes");
                         int action1 = sc.nextInt();
                         switch(action1){
                             case 1:
@@ -76,6 +91,17 @@ public class GUI {
                                 String newUsername = sc.next();
                                 System.out.println("Password: ");
                                 String newPassword = sc.next();
+                            case 2:
+                                System.out.println("This is your information \n" + user.getUsername() + "\n" + user.getPassword() + "\n" + user.getFirstName() + "\n" + user.getLastName() + "\n" + user.getGender() + "\n" + user.getEmail() + "\n" + user.getMarital_status());
+                            case 3:
+                                System.out.println("This are your taxes. What do you want to do? \n" + 
+                                        "1. Taxes Calculator \n" +
+                                        "2. Taxes information");
+                                int option1 = sc.nextInt();
+                                switch(option1){
+                                    case 1:
+                                        
+                                }
                         }
                     }
                 }else {
@@ -90,8 +116,6 @@ public class GUI {
             default:
                 System.out.println("Oh uh, that was not an available option, try again.");
         }
-
-
     }
     //This is the method where is identify the type of user that is going to login
     private Users authenticateUser(String username, String password) {
