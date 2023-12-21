@@ -1,0 +1,120 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package integrateddb.ca;
+
+/**
+ *
+ * @author Ari
+ */
+public abstract class Users {
+    private String username;
+    private String password;
+    private String firstName;
+    private String lastName;
+    private String gender;
+    private String email;
+    private String marital_status;
+    private boolean if_married_both_work;
+    private boolean children;
+    private UserType userType;
+
+    public Users(String username, String password, String firstName, String lastName, String gender, String email, String marital_status, boolean if_married_both_work, boolean children, UserType userType) {
+        this.username = username;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.gender = gender;
+        this.email = email;
+        this.marital_status = marital_status;
+        this.if_married_both_work = if_married_both_work;
+        this.children = children;
+        this.userType = userType;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getMarital_status() {
+        return marital_status;
+    }
+
+    public void setMarital_status(String marital_status) {
+        this.marital_status = marital_status;
+    }
+
+    public boolean isIf_married_both_work() {
+        return if_married_both_work;
+    }
+
+    public void setIf_married_both_work(boolean if_married_both_work) {
+        this.if_married_both_work = if_married_both_work;
+    }
+
+    public boolean isChildren() {
+        return children;
+    }
+
+    public void setChildren(boolean children) {
+        this.children = children;
+    }
+
+    public UserType getUserType() {
+        return userType;
+    }
+
+    public void setUserType(UserType userType) {
+        this.userType = userType;
+    }
+    
+    public void modifyProfile(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+}
