@@ -74,6 +74,27 @@ public class Database{
             // Handle the exception according to your application's requirements.
         }
     }
+    public static ArrayList<Users> getTaxList() {
+        ArrayList<Users> taxList = new ArrayList<>();
+
+        try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+             Statement stmt = conn.createStatement();
+             ResultSet results = stmt.executeQuery("SELECT * FROM users;")) {
+
+            while (results.next()) {
+                double income = results.getDouble("income");
+                double taxesOwed = results.getDouble("taxesOwed");
+                
+                Taxes tax = new Taxes(income, taxesOwed);
+                taxList.add(tax);
+            }
+            return taxList;
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 
     public static ArrayList<Users> getUsersList() {
         ArrayList<Users> userList = new ArrayList<>();

@@ -1,5 +1,13 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package integrateddb.ca;
 
+/**
+ *
+ * @author Ari
+ */
 public class TaxCalculator {
     public static double calculateTax(Users user, double income) {
         String maritalStatus = user.getMarital_status();
@@ -36,6 +44,13 @@ public class TaxCalculator {
         }
 
         return tax;
+    }
+    public static String getTaxInformation(Users user, double income){
+        double calculatedTax = calculateTax(user, income);
+        String taxInfo = "Tax Information for User " + user.getUsername() + ":\n" +
+                "Income: $" + income + "\n" +
+                "Calculated Tax: $" + calculatedTax + "\n";
+        return taxInfo;
     }
 }
 

@@ -9,37 +9,27 @@ package integrateddb.ca;
  * @author Ari
  */
 public class Taxes {
-    int incomeGross;
-    int taxCredits;
-    int taxesOwed;
+    double income;
+    double taxesOwed;
 
-    public Taxes(int incomeGross, int taxCredits, int taxesOwed) {
-        this.incomeGross = incomeGross;
-        this.taxCredits = taxCredits;
+    public Taxes(double income, double taxesOwed) {
+        this.income = income;
         this.taxesOwed = taxesOwed;
     }
 
-    public int getIncomeGross() {
-        return incomeGross;
+    public double getIncome() {
+        return income;
     }
 
-    public void setIncomeGross(int incomeGross) {
-        this.incomeGross = incomeGross;
+    public void setIncome(double income) {
+        this.income = income;
     }
 
-    public int getTaxCredits() {
-        return taxCredits;
-    }
-
-    public void setTaxCredits(int taxCredits) {
-        this.taxCredits = taxCredits;
-    }
-
-    public int getTaxesOwed() {
+    public double getTaxesOwed() {
         return taxesOwed;
     }
 
-    public void setTaxesOwed(int taxesOwed) {
+    public void setTaxesOwed(double taxesOwed) {
         this.taxesOwed = taxesOwed;
     }
     

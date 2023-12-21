@@ -4,10 +4,6 @@
  */
 package integrateddb.ca;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -19,15 +15,12 @@ public class GUI {
 
     public void useGUI(){
         int i = 0;
-
-
         Scanner sc = new Scanner(System.in);
         System.out.println("Welcome to 'Tax System' \n" +
                 "The best application for your tax calculations, what would you like to do?: \n" +
                 "1. Login \n" +
                 "2. Register");
         int choice1 = sc.nextInt();
-
         switch(choice1){
             case 1:
                 System.out.println("Please enter your username and password: ");
@@ -72,7 +65,7 @@ public class GUI {
                                 System.out.println("Both Work If Married: " + u.isIf_married_both_work());
                                 System.out.println("Children: " + u.isChildren());}
                             case 4:
-                                
+                                TaxCalculator.getTaxInformation(user, income);
                         }
                     } else{
                         System.out.println("What would you like to do?\n" +
@@ -96,11 +89,18 @@ public class GUI {
                             case 3:
                                 System.out.println("This are your taxes. What do you want to do? \n" + 
                                         "1. Taxes Calculator \n" +
-                                        "2. Taxes information");
+                                        "2. Tax information");
                                 int option1 = sc.nextInt();
                                 switch(option1){
                                     case 1:
-                                        
+                                        System.out.println("Enter your income: ");
+                                        double income = sc.nextDouble();
+                                        double tax = TaxCalculator.calculateTax(user, income);
+                                        System.out.println("You calculated tax is: $" + tax);
+                                        break;
+                                    case 2:
+                                        TaxCalculator.getTaxInformation(user, income);
+                                        break;
                                 }
                         }
                     }
