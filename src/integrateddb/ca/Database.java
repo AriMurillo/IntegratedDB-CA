@@ -6,11 +6,10 @@ package integrateddb.ca;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.Statement;
 
 /**
  *
@@ -53,6 +52,28 @@ public class Database{
         } catch (Exception e) {
             e.printStackTrace();
             return null;
+        }
+    }
+    
+     public static void removeUser(String usernameToRemove) {
+        String jdbcUrl = "jdbc:mysql://localhost/taxes_company";
+        String username = "ooc2023";
+        String password = "ooc2023";
+
+        try (Connection connection = DriverManager.getConnection(jdbcUrl, username, password)) {
+            String sql = "DELETE FROM users WHERE username = ?";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                preparedStatement.setString(1, usernameToRemove);
+                int affectedRows = preparedStatement.executeUpdate();
+
+                if (affectedRows > 0) {
+                    System.out.println("User removed successfully!");
+                } else {
+                    System.out.println("User not found or removal failed.");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); // Handle the exception appropriately
         }
     }
 }

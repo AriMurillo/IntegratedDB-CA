@@ -4,7 +4,10 @@
  */
 package integrateddb.ca;
 
-import java.util.List;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.Scanner;
 
 /**
@@ -32,8 +35,51 @@ public class GUI {
                         if (user != null) {
                             String userName = user.getUsername();
                            System.out.println("Login successful. User Name: " + userName);
-                        i++;
-                        } else {
+                        //i++;
+                        if(user.getUserType() == true){
+                            System.out.println("What would you like to do?" +
+                                   "1. Update your profile \n" + 
+                                   "2. Remove users \n" + 
+                                   "3. List of users \n" + 
+                                   "4. Review users information");
+                            int action1 = sc.nextInt();
+                            switch(action1){
+                                case 1:
+                                    System.out.println("Enter new profile information");
+                                    System.out.println("First Name: ");
+                                    String newFirstName = sc.next();
+                                    System.out.println("Last Name: ");
+                                    String newLastName = sc.next();
+                                    System.out.println("Username: ");
+                                    String newUsername = sc.next();
+                                    System.out.println("Password: ");
+                                    String newPassword = sc.next();
+                                case 2:
+                                    System.out.println("Enter the username of the user to be removed: ");
+                                    String usernameToRemove = sc.next();
+                                    Database.removeUser(usernameToRemove);
+
+                            }
+                        } else{
+                            System.out.println("What would you like to do?" +
+                                   "1. Update your Profile \n" + 
+                                   "2. Check your Taxes \n" + 
+                                   "3. Review your Information");
+                            int action1 = sc.nextInt();
+                            switch(action1){
+                                case 1:
+                                    System.out.println("Enter new profile information");
+                                    System.out.println("First Name: ");
+                                    String newFirstName = sc.next();
+                                    System.out.println("Last Name: ");
+                                    String newLastName = sc.next();
+                                    System.out.println("Username: ");
+                                    String newUsername = sc.next();
+                                    System.out.println("Password: ");
+                                    String newPassword = sc.next();
+                            }
+                        } 
+                        }else {
                             System.out.println("Login failed. Incorrect username or password.");
                         }
 
@@ -53,7 +99,7 @@ public class GUI {
         }while(i == 0);
     }
 //This is the method where is identify the type of user that is going to login
-private Users authenticateUser(String username, String password) {
+    private Users authenticateUser(String username, String password) {
         Users user = Database.getUsers(username,password);
         if (user == null){
             System.out.println("User Not Found");
@@ -64,8 +110,6 @@ private Users authenticateUser(String username, String password) {
         }else{
             return null; //The user wasn't found
             }
-
     }
-
 
 }
