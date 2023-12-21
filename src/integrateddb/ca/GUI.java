@@ -47,10 +47,12 @@ public class GUI {
                                 String newUsername = sc.next();
                                 System.out.println("Password: ");
                                 String newPassword = sc.next();
+                                break;
                             case 2:
                                 System.out.println("Enter the username of the user to be removed: ");
                                 String usernameToRemove = sc.next();
                                 Database.removeUser(usernameToRemove);
+                                break;
                             case 3:
                                 System.out.println("List of users:");
                                 ArrayList<Users> userList = Database.getUsersList();
@@ -64,8 +66,10 @@ public class GUI {
                                 System.out.println("Marital Status: " + u.getMarital_status());
                                 System.out.println("Both Work If Married: " + u.isIf_married_both_work());
                                 System.out.println("Children: " + u.isChildren());}
+                                break;
                             case 4:
                                 TaxCalculator.getTaxInformation(user, income);
+                                break;
                         }
                     } else{
                         System.out.println("What would you like to do?\n" +
@@ -84,8 +88,10 @@ public class GUI {
                                 String newUsername = sc.next();
                                 System.out.println("Password: ");
                                 String newPassword = sc.next();
+                                break;
                             case 2:
                                 System.out.println("This is your information \n" + user.getUsername() + "\n" + user.getPassword() + "\n" + user.getFirstName() + "\n" + user.getLastName() + "\n" + user.getGender() + "\n" + user.getEmail() + "\n" + user.getMarital_status());
+                                break;
                             case 3:
                                 System.out.println("This are your taxes. What do you want to do? \n" + 
                                         "1. Taxes Calculator \n" +
