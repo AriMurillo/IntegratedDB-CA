@@ -19,7 +19,7 @@ public class GUI {
         do{
             try{
                 Scanner sc = new Scanner(System.in);
-                System.out.println("Welcome to 'EaturSoul' \n" +
+                System.out.println("Welcome to 'Tax System' \n" +
                                    "The best application for your tax calculations, what would you like to do?: \n" +
                                    "1. Login \n" + 
                                    "2. Register");
@@ -30,13 +30,13 @@ public class GUI {
                         System.out.println("Please enter your username and password: ");
                         Users user = authenticateUser(sc.next(), sc.next()); //Here is where the method is being used to identify the user
                         if (user != null) {
-                        UserType userType = user.getUserType();
-                           System.out.println("Login successful. User type: " + userType);
+                            String userName = user.getUsername();
+                           System.out.println("Login successful. User Name: " + userName);
                         i++;
                         } else {
                             System.out.println("Login failed. Incorrect username or password.");
                         }
-                    
+
                     case 2:
                         System.out.println("Please enter the username you will like to use and a password for your new account:");
                         //Databse validation still pending
@@ -54,12 +54,18 @@ public class GUI {
     }
 //This is the method where is identify the type of user that is going to login
 private Users authenticateUser(String username, String password) {
-        List<Users> users = Database.getUsers();
-        for (Users user : users) {
-            if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
-                return user; //The user was found
-            }
+        Users user = Database.getUsers(username,password);
+        if (user == null){
+            System.out.println("User Not Found");
+            return null;
         }
-        return null; //The user wasn't found
-    }    
+        if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
+            return user; //The user was found
+        }else{
+            return null; //The user wasn't found
+            }
+
+    }
+
+
 }
