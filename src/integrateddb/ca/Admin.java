@@ -8,8 +8,9 @@ package integrateddb.ca;
  *
  * @author Ari
  */
-public class Admin {
-    public Admin(String username, String password, String name, String surname) {
-        super(username, password, name, surname, UserType.ADMIN);
+public class Admin extends Users{
+    public Admin(String username, String password, String firstName, String lastName, String gender, String email, String marital_status, boolean if_married_both_work, boolean children, UserType userType) {
+        super(username, password, firstName, lastName, gender,email, marital_status, if_married_both_work, children,UserType.ADMIN);
+
     }
 }
