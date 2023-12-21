@@ -45,7 +45,7 @@ public class TaxCalculator {
 
         return tax;
     }
-<<<<<<< HEAD
+
     public static String getTaxInformation(Users user, double income){
         double calculatedTax = calculateTax(user, income);
         String taxInfo = "Tax Information for User " + user.getUsername() + ":\n" +
@@ -53,7 +53,7 @@ public class TaxCalculator {
                 "Calculated Tax: $" + calculatedTax + "\n";
         return taxInfo;
     }
-=======
+
 
     public static double calculateUSC(double income) {
         double usc = 0;
