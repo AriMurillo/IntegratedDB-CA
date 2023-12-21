@@ -8,7 +8,7 @@ package integrateddb.ca;
  *
  * @author Ari
  */
-public abstract class Users {
+public class Users {
     private String username;
     private String password;
     private String firstName;
@@ -20,9 +20,9 @@ public abstract class Users {
     private boolean children;
     private int id;
     private int employeeID;
-    private UserType userType;
+    private boolean userType;
 
-    public Users(String username, String password, String firstName, String lastName, String gender, String email, String marital_status, boolean if_married_both_work, boolean children, int id, int employeeID, UserType userType) {
+    public Users(String username, String password, String firstName, String lastName, String gender, String email, String marital_status, boolean if_married_both_work, boolean children, int id, int employeeID, boolean userType) {
         this.username = username;
         this.password = password;
         this.firstName = firstName;
@@ -125,14 +125,14 @@ public abstract class Users {
         this.employeeID = employeeID;
     }
 
-    public UserType getUserType() {
+    public boolean getUserType() {
         return userType;
     }
 
-    public void setUserType(UserType userType) {
+    public void setUserType(boolean userType) {
         this.userType = userType;
     }
-    
+
     public void modifyProfile(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
