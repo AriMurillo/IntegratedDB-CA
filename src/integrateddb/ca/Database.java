@@ -10,7 +10,6 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
@@ -74,8 +73,8 @@ public class Database{
             // Handle the exception according to your application's requirements.
         }
     }
-    public static ArrayList<Users> getTaxList() {
-        ArrayList<Users> taxList = new ArrayList<>();
+    public static ArrayList<Taxes> getTaxList() {
+        ArrayList<Taxes> taxList = new ArrayList<>();
 
         try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
              Statement stmt = conn.createStatement();

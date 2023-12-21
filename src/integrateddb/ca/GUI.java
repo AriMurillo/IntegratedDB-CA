@@ -34,7 +34,7 @@ public class GUI {
                                 "1. Update your profile \n" +
                                 "2. Remove users \n" +
                                 "3. List of users \n" +
-                                "4. Review user taxes information");
+                                "4. Review user tax information");
                         int action1 = sc.nextInt();
                         switch(action1){
                             case 1:
@@ -68,7 +68,11 @@ public class GUI {
                                 System.out.println("Children: " + u.isChildren());}
                                 break;
                             case 4:
-                                TaxCalculator.getTaxInformation(user, income);
+                                System.out.println("Tax information:");
+                                ArrayList<Taxes> taxList = Database.getTaxList();
+                                for (Taxes t : taxList) {
+                                System.out.println("Income: " + t.getIncome());
+                                System.out.println("Taxes owed: " + t.getTaxesOwed());}
                                 break;
                         }
                     } else{

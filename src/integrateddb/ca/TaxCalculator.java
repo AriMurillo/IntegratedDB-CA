@@ -46,13 +46,13 @@ public class TaxCalculator {
         return tax;
     }
 
-    public static String getTaxInformation(Users user, double income){
-        double calculatedTax = calculateTax(user, income);
-        String taxInfo = "Tax Information for User " + user.getUsername() + ":\n" +
-                "Income: $" + income + "\n" +
-                "Calculated Tax: $" + calculatedTax + "\n";
-        return taxInfo;
-    }
+    //public static String getTaxInformation(Users user, double income){
+    //    double calculatedTax = calculateTax(user, income);
+    //    String taxInfo = "Tax Information for User " + user.getUsername() + ":\n" +
+    //            "Income: $" + income + "\n" +
+    //            "Calculated Tax: $" + calculatedTax + "\n";
+    //    return taxInfo;
+    //}
 
 
     public static double calculateUSC(double income) {
