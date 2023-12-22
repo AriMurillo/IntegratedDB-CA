@@ -148,6 +148,37 @@ public class Database{
     }
 
 
+     public static Taxes getTaxes(int idUser) {
+        try(Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+            Statement stmt = conn.createStatement();){
+            // Object that stores the result of our query
+            ResultSet results = stmt.executeQuery(String.format(
+                    "SELECT * FROM calculations WHERE user_id='%s';",
+                    idUser));
+            if(!results.next()) {
+                return null;
+            }else{
+            //results.next();
+            String firstName = results.getString("first_name");
+            String lastName = results.getString("last_name");
+            username = results.getString("username");
+            password = results.getString("password");
+            String gender = results.getString("gender");
+            String email = results.getString("email");
+            String maritalStatus = results.getString("marital_status");
+            boolean bothWork = results.getBoolean("if_married_both_work");
+            boolean children = results.getBoolean("children");
+            boolean userType = results.getBoolean("admin");
+            int employeeID = results.getInt("employee_id");
+            int id = results.getInt("user_id");
+            Taxes taxes = new Taxes(username,password,firstName,lastName,gender, email,maritalStatus, bothWork, children,id,employeeID,userType);
+            return taxes;
+                }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 
 }
 

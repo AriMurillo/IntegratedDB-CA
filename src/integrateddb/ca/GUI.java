@@ -109,7 +109,8 @@ public class GUI {
                                         System.out.println("You calculated tax is: $" + tax);
                                         break;
                                     case 2:
-                                        TaxCalculator.getTaxInformation(user, income);
+                                        Taxes taxes = Database.getTaxes(user.getId());
+                                        TaxCalculator.getTaxInformation(user, taxes);
                                         break;
                                 }
                         }
