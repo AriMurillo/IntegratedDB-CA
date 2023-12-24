@@ -9,29 +9,77 @@ package integrateddb.ca;
  * @author Ari
  */
 public class Taxes {
-    double income;
-    double taxesOwed;
+    int calculationId;
+    String taxesType;
+    int userId;
+    String status;
+    int income;
+    int taxesOwed;
+    int tacesCredit;
 
-    public Taxes(double income, double taxesOwed) {
+    public Taxes(int calculationId, String taxesType, int userId, String status, int income, int taxesOwed, int tacesCredit) {
+        this.calculationId = calculationId;
+        this.taxesType = taxesType;
+        this.userId = userId;
+        this.status = status;
         this.income = income;
         this.taxesOwed = taxesOwed;
+        this.tacesCredit = tacesCredit;
     }
 
-    public double getIncome() {
+    public int getCalculationId() {
+        return calculationId;
+    }
+
+    public void setCalculationId(int calculationId) {
+        this.calculationId = calculationId;
+    }
+
+    public String getTaxesType() {
+        return taxesType;
+    }
+
+    public void setTaxesType(String taxesType) {
+        this.taxesType = taxesType;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public int getIncome() {
         return income;
     }
 
-    public void setIncome(double income) {
+    public void setIncome(int income) {
         this.income = income;
     }
 
-    public double getTaxesOwed() {
+    public int getTaxesOwed() {
         return taxesOwed;
     }
 
-    public void setTaxesOwed(double taxesOwed) {
+    public void setTaxesOwed(int taxesOwed) {
         this.taxesOwed = taxesOwed;
     }
-    
-    
+
+    public int getTacesCredit() {
+        return tacesCredit;
+    }
+
+    public void setTacesCredit(int tacesCredit) {
+        this.tacesCredit = tacesCredit;
+    }
 }

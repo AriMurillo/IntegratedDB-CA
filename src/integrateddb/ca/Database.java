@@ -32,7 +32,6 @@ public class Database{
             if(!results.next()) {
                 return null;
             }else{
-            //results.next();
             String firstName = results.getString("first_name");
             String lastName = results.getString("last_name");
             username = results.getString("username");
@@ -42,7 +41,7 @@ public class Database{
             String maritalStatus = results.getString("marital_status");
             boolean bothWork = results.getBoolean("if_married_both_work");
             boolean children = results.getBoolean("children");
-            boolean userType = results.getBoolean("admin");
+            boolean userType = results.getBoolean("user_type");
             int employeeID = results.getInt("employee_id");
             int id = results.getInt("user_id");
             Users users = new Users(username,password,firstName,lastName,gender, email,maritalStatus, bothWork, children,id,employeeID,userType);
@@ -81,10 +80,14 @@ public class Database{
              ResultSet results = stmt.executeQuery("SELECT * FROM users;")) {
 
             while (results.next()) {
-                double income = results.getDouble("income");
-                double taxesOwed = results.getDouble("taxesOwed");
-                
-                Taxes tax = new Taxes(income, taxesOwed);
+                int calculation_id = results.getInt("calculation_id");
+                String taxes_type = results.getString("taxes_type");
+                int id = results.getInt("user_id");
+                String status = results.getString("status");
+                int income = results.getInt("income");
+                int taxes_owed = results.getInt("taxes_owed");
+                int taxes_credit = results.getInt("taxes_credit");
+                Taxes tax = new Taxes(calculation_id,taxes_type,id,status,income, taxes_owed,taxes_credit);
                 taxList.add(tax);
             }
             return taxList;
@@ -147,7 +150,6 @@ public class Database{
         }
     }
 
-
      public static Taxes getTaxes(int idUser) {
         try(Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
             Statement stmt = conn.createStatement();){
@@ -158,20 +160,14 @@ public class Database{
             if(!results.next()) {
                 return null;
             }else{
-            //results.next();
-            String firstName = results.getString("first_name");
-            String lastName = results.getString("last_name");
-            username = results.getString("username");
-            password = results.getString("password");
-            String gender = results.getString("gender");
-            String email = results.getString("email");
-            String maritalStatus = results.getString("marital_status");
-            boolean bothWork = results.getBoolean("if_married_both_work");
-            boolean children = results.getBoolean("children");
-            boolean userType = results.getBoolean("admin");
-            int employeeID = results.getInt("employee_id");
+            int calculation_id = results.getInt("calculation_id");
+            String taxes_type = results.getString("taxes_type");
             int id = results.getInt("user_id");
-            Taxes taxes = new Taxes(username,password,firstName,lastName,gender, email,maritalStatus, bothWork, children,id,employeeID,userType);
+            String status = results.getString("status");
+            int income = results.getInt("income");
+            int taxes_owed = results.getInt("taxes_owed");
+            int taxes_credit = results.getInt("taxes_credit");
+            Taxes taxes = new Taxes(calculation_id,taxes_type,id,status,income, taxes_owed,taxes_credit);
             return taxes;
                 }
         } catch (Exception e) {
